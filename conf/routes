@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(file)
+
+GET  /getCustomDates   controllers.GetCustomDatesController.getCustomDates
+POST /visualizeCustomDates  controllers.GetCustomDatesController.visualizeCustomDates
+
+GET  /getMACustomDates   controllers.MovingAverageController.getMACustomDates
+POST /visualizeMACustomDates  controllers.MovingAverageController.visualizeMovingAverages
+
+GET  /getForecastDate   controllers.ForecastController.forecastDate
+POST /tradingDecision  controllers.ForecastController.tradingDecision

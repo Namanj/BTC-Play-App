@@ -1,0 +1,58 @@
+@(prices: play.api.libs.json.JsValue, times: play.api.libs.json.JsValue)( implicit request: RequestHeader )
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div id="chart">
+
+<script>
+
+    window.onload = function(){
+
+        var pricesJS = JSON.parse("@prices");
+        var datesJS = JSON.parse("@times").map(item => {return new Date(item)});
+
+    var options = {
+  chart: {
+    type: 'area'
+  },
+  series: [{
+    name: 'sales',
+    data: pricesJS
+
+  }],
+    xaxis: {
+    categories: datesJS
+  }
+}
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+};
+  </script>
+
+</div>
+
+<p>
+    <a href="@routes.HomeController.index">Click here for the Home Page</a>
+</p>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<style>
+        body {
+  font-family: Roboto, sans-serif;
+}
+
+#chart {
+  max-height: 650px;
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+
+    </style>
+</html>

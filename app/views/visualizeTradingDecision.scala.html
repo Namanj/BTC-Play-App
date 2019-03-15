@@ -1,0 +1,17 @@
+@(forecastedPrice: String, tradingDecision: String, tradingStrategy: String)( implicit request: RequestHeader )
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div id="chart">
+    <p>The forecasted price is: @forecastedPrice</p>
+    <p>The chosen Trading Strategy is: @tradingStrategy</p>
+    <p>The Trading Decision is: @tradingDecision</p>
+</div>
+
+<p>
+    <a href="@routes.HomeController.index">Click here for the Home Page</a>
+</p>
+
+</body>
+</html>

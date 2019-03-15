@@ -1,0 +1,15 @@
+@(prices: play.api.libs.json.JsValue, times: play.api.libs.json.JsValue, message: String)(implicit request: MessagesRequestHeader,  assetsFinder: AssetsFinder)
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to BTC Play App", assetsFinder) {
+
+    @*
+     * Get an `Html` object by calling the built-in Play welcome
+     * template and passing a `String` message.
+     *@
+    @welcome(prices, times, message, style = "scala")
+
+}

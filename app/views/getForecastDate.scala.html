@@ -1,0 +1,32 @@
+@(form: Form[Forecast], postUrl: Call)(implicit request: MessagesRequestHeader,  assetsFinder: AssetsFinder)
+
+@main("Blog Post", assetsFinder) {
+
+<h1>Please enter the forecast date </h1>
+
+@* Flash shows updates to a page *@
+@request.flash.data.map{ case (name, value) =>
+<div>@name: @value</div>
+}
+
+@* Global errors are not tied to any particular form field *@
+@if(form.hasGlobalErrors) {
+@form.globalErrors.map { error: FormError =>
+<div>
+    Error: @error.key: @error.message
+</div>
+}
+}
+
+@* “'id” in these elements is the css `id` field that will be shown *@
+@helper.form(postUrl, 'id -> "blog_edit_form") {
+@helper.CSRF.formField
+
+@helper.inputText(form("forecastDate"), 'size -> 60)
+@helper.checkbox(form("Optimistic_Strategy"))
+@helper.checkbox(form("Safe_Strategy"))
+
+<button>Submit</button>
+}
+
+}
