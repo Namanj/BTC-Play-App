@@ -7,28 +7,31 @@
 
 <script>
 
-    window.onload = function(){
+window.onload = function() {
 
-        var pricesJS = JSON.parse("@prices");
-        var datesJS = JSON.parse("@times").map(item => {return new Date(item)});
+    var pricesJS = JSON.parse("@prices");
+    var datesJS = JSON.parse("@times").map(item => {
+        return new Date(item)
+    });
 
     var options = {
-  chart: {
-    type: 'area'
-  },
-  series: [{
-    name: 'sales',
-    data: pricesJS
+        chart: {
+            type: 'area'
+        },
+        series: [{
+            name: 'sales',
+            data: pricesJS
 
-  }],
-    xaxis: {
-    categories: datesJS
-  }
-}
+        }],
+        xaxis: {
+            categories: datesJS,
+            tickAmount: 10
+      }
+    }
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
 
-chart.render();
+    chart.render();
 };
   </script>
 

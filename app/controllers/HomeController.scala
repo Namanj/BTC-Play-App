@@ -1,14 +1,9 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
 import play.api.libs.json._
-import play.api.libs.functional.syntax._
 import scala.language.postfixOps
-import play.api.i18n._
 
 import models.BTCData
 

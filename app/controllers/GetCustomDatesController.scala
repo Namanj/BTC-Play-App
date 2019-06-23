@@ -1,21 +1,15 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import play.api.libs.json._
-import play.api.libs.functional.syntax._
 import scala.language.postfixOps
-import play.api.i18n._
 import java.util.Date
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 import models.BTCData
 import models.BTCData.BTCPrice
-import models.forecast
 
 case class StartAndEndDates(startDate: Date, endDate: Date)
 

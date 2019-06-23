@@ -1,12 +1,9 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import play.api.libs.json._
-import play.api.libs.functional.syntax._
 import scala.language.postfixOps
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -78,8 +75,6 @@ class MovingAverageController @Inject()(cc: MessagesControllerComponents)(implic
     }
 
     val formValidationResult: Form[StartAndEndDates] = form.bindFromRequest
-    formValidationResult.fold(
-      errorFunction, successFunction
-    )
+    formValidationResult.fold(errorFunction, successFunction)
   }
 }

@@ -1,9 +1,5 @@
 package models
 
-import play.api._
-import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import scala.language.postfixOps
@@ -40,8 +36,8 @@ object BTCData {
     val BTCPriceObjectList: List[BTCPrice] = pricesJSObject.as[List[BTCPrice]]
 
     val format = new java.text.SimpleDateFormat("yyyy-MM-dd")
-    val earliestDate: Date = BTCPriceObjectList(BTCPriceObjectList.length - 1).time
-    val latestDate: Date = BTCPriceObjectList(0).time
+    val earliestDate: Date = BTCPriceObjectList.last.time
+    val latestDate: Date = BTCPriceObjectList.head.time
 
     (earliestDate, latestDate, BTCPriceObjectList)
   }
@@ -52,12 +48,12 @@ object BTCData {
     * @param BTCObjects
     * @return
     */
-  def jsonify(BTCObjects: List[BTCPrice]) = {
+  def jsonify(BTCObjects: List[BTCPrice]): (JsValue, JsValue) = {
     val times: List[Date] = BTCObjects.map(item => item.time).reverse
     val prices: List[String] = BTCObjects.map(item => item.price).reverse
 
-    val datesJS = Json.toJson(times)
-    val pricesJS = Json.toJson(prices.map(item => item.toFloat))
+    val datesJS: JsValue = Json.toJson(times)
+    val pricesJS: JsValue = Json.toJson(prices.map(item => item.toFloat))
 
     (pricesJS, datesJS)
   }
