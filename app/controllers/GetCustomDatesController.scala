@@ -61,7 +61,7 @@ class GetCustomDatesController @Inject()(cc: MessagesControllerComponents)(impli
       logger.debug("CAME INTO successFunction")
 
       val filteredBTCObjects: List[BTCPrice] = _BTCPriceObjectList.filter(item => item.time.after(data.startDate) && item.time.before(data.endDate))
-      val (filteredPricesJS, filteredDatesJS) = BTCData.jsonify(filteredBTCObjects)
+      val (filteredDatesJS, filteredPricesJS) = BTCData.jsonify(filteredBTCObjects)
 
       Ok(views.html.visualize(filteredPricesJS, filteredDatesJS))
     }

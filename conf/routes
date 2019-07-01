@@ -16,3 +16,5 @@ POST /visualizeMACustomDates  controllers.MovingAverageController.visualizeMovin
 
 GET  /getForecastDate   controllers.ForecastController.forecastDate
 POST /tradingDecision  controllers.ForecastController.tradingDecision
+
+GET  /getExplanatoryAnalysis   controllers.ExplanatoryAnalysisController.index

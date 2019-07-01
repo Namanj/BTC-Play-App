@@ -14,7 +14,7 @@ import models.BTCData
 @Singleton
 class HomeController @Inject()(cc: MessagesControllerComponents)(implicit assetsFinder: AssetsFinder) extends MessagesAbstractController(cc) {
 
-  val (pricesJS, datesJS): (JsValue, JsValue) = BTCData.getPricesAndDatesJS
+  val (datesJS, pricesJS): (JsValue, JsValue) = BTCData.getPricesAndDatesJS
 
   /**
     * Create an Action to render an HTML page with a welcome message.

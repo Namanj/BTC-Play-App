@@ -1,34 +1,55 @@
-@(prices: play.api.libs.json.JsValue, times: play.api.libs.json.JsValue)( implicit request: RequestHeader )
+@(dates: play.api.libs.json.JsValue, percentages: play.api.libs.json.JsValue)( implicit request: RequestHeader )
 
 <!DOCTYPE html>
 <html lang="en">
 <body>
 <div id="chart">
 
+<p>Here's a visualization of the volatility in the BTC-USD prices per month for the past 12 months</p>
+
 <script>
 
 window.onload = function() {
 
-    var pricesJS = JSON.parse("@prices");
-    var datesJS = JSON.parse("@times");
-
+    var percentagesJS = JSON.parse("@percentages");
+    var datesJS = JSON.parse("@dates").map(item => {
+        return new Date(item)
+    });
     var options = {
         chart: {
-            type: 'area',
+            type: 'bar',
             height: 450,
             width: 700
         },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    position: 'top', // top, center, bottom
+                },
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+                return val + "%";
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+            }
+        },
         series: [{
             name: 'Stock BTC',
-            data: pricesJS
+            data: percentagesJS
 
         }],
         xaxis: {
-                type: 'datetime'
+                type: 'string'
             },
       labels: datesJS,
         title: {
-            text: 'Fundamental Analysis of Stocks',
+            text: 'BTC-USD Volatility Graph',
             align: 'left'
         },
         subtitle: {
@@ -36,7 +57,7 @@ window.onload = function() {
             align: 'left'
         },
         yaxis: {
-            opposite: true
+            opposite: false
         },
         legend: {
             horizontalAlign: 'left'

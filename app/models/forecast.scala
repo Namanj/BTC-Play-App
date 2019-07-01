@@ -1,7 +1,5 @@
 package models
 
-import play.api.libs.json._
-import java.util.Date
 import models.BTCData.BTCPrice
 import controllers.Forecast
 

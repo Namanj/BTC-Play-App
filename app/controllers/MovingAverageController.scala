@@ -69,7 +69,7 @@ class MovingAverageController @Inject()(cc: MessagesControllerComponents)(implic
         BTCPrice(item.time, price.toString)
       })
 
-      val (movingAveragePricesJS, movingAverageDatesJS) = BTCData.jsonify(movingAverageBTCObjects)
+      val (movingAverageDatesJS, movingAveragePricesJS) = BTCData.jsonify(movingAverageBTCObjects)
 
       Ok(views.html.visualize(movingAveragePricesJS, movingAverageDatesJS))
     }
