@@ -2,6 +2,8 @@
 
 This is a starter application that shows how Play works and can be effectively used to implement functionality.  Please see the documentation at <https://www.playframework.com/documentation/latest/Home> for more details.
 
+![Homepage](homepage.png)
+
 ## Running
 
 Run this using [sbt](http://www.scala-sbt.org/). Go to the root of the project directory and execute via terminal:
